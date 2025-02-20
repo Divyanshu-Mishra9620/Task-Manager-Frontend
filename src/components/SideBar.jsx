@@ -27,7 +27,6 @@ const iconColors = {
 export function AppSidebar({ onSectionSelect }) {
   const [activeSection, setActiveSection] = useState(null);
 
-  // Memoize the items array inside the component
   const items = useMemo(
     () => [
       {
@@ -64,7 +63,6 @@ export function AppSidebar({ onSectionSelect }) {
     []
   );
 
-  // Memoize the section click handler
   const handleSectionClick = useCallback(
     (section) => {
       setActiveSection(section);
