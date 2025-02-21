@@ -1,5 +1,7 @@
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+
 import { cn } from "../../lib/utils";
 
 export const Dialog = ({ open, onOpenChange, children }) => (
@@ -14,14 +16,12 @@ export const DialogContent = React.forwardRef(
   ({ className, ...props }, ref) => (
     <DialogPrimitive.Portal>
       <DialogPrimitive.Overlay className="fixed inset-0 bg-black/30 backdrop-blur-sm" />
-      <DialogPrimitive.Content
-        ref={ref}
-        className={cn(
-          "fixed left-1/2 top-1/2 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white p-6 shadow-lg",
-          className
-        )}
-        {...props}
-      />
+      <DialogPrimitive.Content ref={ref} {...props}>
+        <VisuallyHidden>
+          <DialogTitle>Hidden Dialog Title</DialogTitle>
+        </VisuallyHidden>
+        {props.children}
+      </DialogPrimitive.Content>
     </DialogPrimitive.Portal>
   )
 );

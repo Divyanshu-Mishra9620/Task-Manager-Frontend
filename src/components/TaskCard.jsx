@@ -43,7 +43,6 @@ const TaskCard = memo(
           </div>
         </div>
 
-        {/* Subtasks Section */}
         <div className="p-4">
           {task.subtasks.length > 0 ? (
             <div className="space-y-3">
